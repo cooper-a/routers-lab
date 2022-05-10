@@ -1,0 +1,99 @@
+Milestone 3
+
+#RA and RB deleting
+show interface eth0.0
+configure terminal
+interface eth0.0
+no ip address 192.168.0.1/24
+exit
+interface eth0.1
+no ip address 192.168.1.1/24
+exit
+interface eth0.2
+no ip address 192.168.2.1/24
+exit
+interface eth0.3
+no ip address 192.168.3.1/24
+exit
+interface eth0.4
+no ip address 192.168.4.1/24
+exit
+interface wlan0
+no ip address 192.168.5.1/24
+
+_____
+Configure IP Addresses
+
+R1
+configure terminal
+interface eth0.1
+ip address 10.0.24.1/25
+exit
+interface eth0.2
+ip address 10.0.24.182/30
+exit
+interface eth0.3
+ip address 10.0.24.177/30
+exit
+
+R2
+configure terminal
+interface eth0.1
+ip address 10.0.24.129/27
+exit
+interface eth0.2
+ip address 10.0.24.178/30
+exit
+interface eth0.3
+ip address 10.0.24.186/30
+exit
+
+R3
+configure terminal
+interface eth0.4
+ip address 10.0.24.185/30
+exit
+interface eth0.3
+ip address 10.0.24.181/30
+exit
+
+hstOfi1
+sudo ip addr del 192.100.100.1/24 dev eth1
+sudo ip addr add 10.0.24.2/24 dev eth1
+
+hstOfi2
+sudo ip addr del 192.100.100.3/24 dev eth1
+sudo ip addr add 10.0.24.130/27 dev eth1
+
+R3
+conf term
+interface eth0.1
+ip address 10.0.24.161/28
+exit
+interface eth0.2
+ip address 10.0.24.189/30
+
+R4
+conf term
+interface eth0.2
+ip address 10.0.24.190/30
+exit
+
+
+RIP
+_________
+R1
+conf term
+router rip
+
+R2
+conf term
+router rip
+
+R3
+conf term
+router rip
+
+R4
+conf term
+router rip
