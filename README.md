@@ -1,3 +1,3 @@
-# super-duper-telegram
+# Routers Lab
 
-Networking
+Router Setup for UC3M Networking Lab
